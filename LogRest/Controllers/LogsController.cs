@@ -1,4 +1,3 @@
-using log_rest;
 using Microsoft.AspNetCore.Mvc;
 namespace log_rest.Controllers;
 
@@ -15,13 +14,30 @@ public class LogsController : ControllerBase
     {
         _logger = logger;
         _configuration = configuration;
-        _directoryLocation = _configuration["LogDirectory"];
+        _directoryLocation = _configuration["LogDirectory"] ?? "Logs";
         _fileNameTemplate = _configuration["LogFileNameTemplate"] ?? _fileNameTemplate;
     }
 
     [HttpGet]
     public ActionResult<IEnumerable<Log>> GetAll([FromQuery] List<string> name = null)
     {
+        if (!Directory.Exists(_directoryLocation))
+        {
+            _logger.LogWarning("Log directory not found: {directory}", _directoryLocation);
+            var logs = new List<Log>
+            {
+                new Log
+                {
+                    Id = "Log directory not found",
+                    Name = _directoryLocation,
+                    CreatedTimeUtc = DateTime.MinValue,
+                    LastModifiedTimeUtc = DateTime.MinValue,
+                    SizeInBytes = 0
+                }
+            };
+            return Ok(logs);
+        }
+
         // Get all files in the directory that match the filename template
         var files = new DirectoryInfo(_directoryLocation)
             .GetFiles(_fileNameTemplate)
@@ -53,7 +69,7 @@ public class LogsController : ControllerBase
         int lineNumber = 1;
         using (var reader = file.OpenText())
         {
-            string line;
+            string? line;
             while ((line = reader.ReadLine()) != null)
             {
                 var logEntry = new LogMessage(id, lineNumber++, line);
@@ -83,10 +99,10 @@ public class LogsController : ControllerBase
         foreach (var file in files)
         {
             int lineNumber = 0;
-            LogMessage logEntry = null;
+            LogMessage? logEntry = null;
             using (var reader = file.OpenText())
             {
-                string line;
+                string? line;
                 
                 while ((line = await reader.ReadLineAsync(token)) != null)
                 {
