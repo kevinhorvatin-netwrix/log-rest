@@ -1,0 +1,28 @@
+bin/
+obj/
+TestResults/
+.vs/
+
+// add Visual Studio 2017/2015 cache/options directory
+.vs2017/
+.vs2015/
+
+// add Visual Studio Code directories
+.vscode/
+*/.vscode/
+
+// add Rider directories
+.idea/
+*/.idea/
+
+// add project specific files
+*.csproj.user
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+._*
+
+// Mac specific
+.DS_Store
