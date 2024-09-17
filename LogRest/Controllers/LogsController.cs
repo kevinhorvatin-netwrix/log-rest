@@ -6,13 +6,16 @@ namespace log_rest.Controllers;
 [ApiController]
 public class LogsController : ControllerBase
 {
-    private readonly string _directoryLocation = @"/Users/kevin/RiderProjects/log-rest/TestData/Logs"; // configurable directory location
+    private readonly string _directoryLocation;
     private readonly string _fileNameTemplate = "PAM-*.log"; // configurable filename template
+    private readonly IConfiguration _configuration;
     private readonly ILogger _logger;
 
-    public LogsController(ILogger<LogsController> logger)
+    public LogsController(ILogger<LogsController> logger, IConfiguration configuration)
     {
         _logger = logger;
+        _configuration = configuration;
+        _directoryLocation = _configuration["LogDirectory"];
     }
 
     [HttpGet]
@@ -118,7 +121,7 @@ public class LogsController : ControllerBase
     {
         return (level == null || logEntry.Level >= level) &&
                (startDate == null || logEntry.Date >= startDate) &&
-               (endDate == null || logEntry.Date <= endDate || (startDate == endDate && logEntry.Date - endDate.Value).TotalMilliseconds < 999) &&
+               (endDate == null || logEntry.Date <= endDate || startDate == endDate && (logEntry.Date - endDate.Value).TotalMilliseconds < 999) &&
                (filterText == null || filterText.Count == 0 || SearchForText(logEntry, filterText));
     }
 

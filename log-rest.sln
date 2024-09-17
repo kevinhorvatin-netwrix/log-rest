@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "log-rest", "LogRest\log-rest.csproj", "{13C78BDC-6DAE-468B-B990-7E8D6A496CAE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogRestTest", "LogRestTest\LogRestTest.csproj", "{2334C7C1-FB5C-43D0-9373-67D5077B4DF0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13C78BDC-6DAE-468B-B990-7E8D6A496CAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13C78BDC-6DAE-468B-B990-7E8D6A496CAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13C78BDC-6DAE-468B-B990-7E8D6A496CAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13C78BDC-6DAE-468B-B990-7E8D6A496CAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2334C7C1-FB5C-43D0-9373-67D5077B4DF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2334C7C1-FB5C-43D0-9373-67D5077B4DF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2334C7C1-FB5C-43D0-9373-67D5077B4DF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2334C7C1-FB5C-43D0-9373-67D5077B4DF0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AB6CCFA1-2BF6-4176-A572-6CEA915E653B}
+	EndGlobalSection
+EndGlobal
