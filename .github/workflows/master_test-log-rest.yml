@@ -63,5 +63,5 @@ jobs:
         with:
           app-name: 'test-log-rest'
           slot-name: 'Production'
-          package: .
+          package: '.net-app/log-rest-app'
           
