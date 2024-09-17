@@ -16,6 +16,7 @@ public class LogsController : ControllerBase
         _logger = logger;
         _configuration = configuration;
         _directoryLocation = _configuration["LogDirectory"];
+        _fileNameTemplate = _configuration["LogFileNameTemplate"] ?? _fileNameTemplate;
     }
 
     [HttpGet]
