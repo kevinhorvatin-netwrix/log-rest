@@ -25,14 +25,14 @@ jobs:
         run: dotnet build --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o log-rest-app
+        run: dotnet publish -c Release -o test-log-rest
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: .net-app
           path: |
-            log-rest-app
+            test-log-rest
             TestData/Logs
 
   deploy:
