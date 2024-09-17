@@ -31,7 +31,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: .net-app
-          path: log-rest-app
+          path: |
+            log-rest-app
+            TestData/Logs
 
   deploy:
     runs-on: windows-latest
