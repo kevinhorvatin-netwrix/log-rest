@@ -27,7 +27,10 @@ public class LogMessage
         }
         else
         {
-            throw new Exception($"Unable to parse line: {line}");
+            Console.WriteLine($"Warning: Unable to parse line correctly: {line}. Adding default values.");
+            Date = DateTime.MinValue; // Default value
+            Level = LogLevel.Information; // Default level
+            Message = line; // Display full line in Message
         }
     }
 
